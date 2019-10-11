@@ -1,0 +1,11 @@
+version: '3'
+services:
+  watcher:
+    build: .
+    environment:
+      - TAG=${TAG}
+      - PERIOD_SECONDS=${PERIOD_SECONDS}
+    volumes:
+      - ${DIR}:/watchdir
+    ports:
+      - "3001:3000"
