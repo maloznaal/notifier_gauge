@@ -8,6 +8,7 @@ tag = os.environ['TAG']
 # const path, iNotify watching for this path inside container bind to host machine
 WATCH_DIR = '/watchdir/'
 PERIOD_SECONDS = os.environ['PERIOD_SECONDS']
+TYPE = os.environ['TYPE']
 
 g = Gauge('ftp_failed_directory', tag)
 
@@ -18,6 +19,7 @@ class ProcessShutdown(Exception):
 
 
 # count files inside bind mounted DIR - WATCH_DIR
+# specify .format for file types
 def count_files():
     files = [f for f in glob.glob(WATCH_DIR + "*", recursive=False)]
     return len(files)
